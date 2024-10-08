@@ -8,7 +8,13 @@ const PostRouter = require('./Router/Postrouter');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: "https://cooking-forum-client.onrender.com",
+        methods : ["POST", "PUT", "GET", "DELETE"],
+        credentials : true,
+    })
+);
 
 const port = 7777;
 app.use('/post', PostRouter); 
