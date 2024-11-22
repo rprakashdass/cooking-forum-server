@@ -10,7 +10,7 @@ const router = require('./Router/AuthRoute');
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ['https://cooking-forum-client.onrender.com', 'http://localhost:5173'];
+const allowedOrigins = ['http://toppings.rprakashdass.in/', 'http://localhost:5173'];
 
 // CORS middleware applied before routes
 app.use(cors({
