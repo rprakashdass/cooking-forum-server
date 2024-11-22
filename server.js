@@ -10,9 +10,8 @@ const router = require('./Router/AuthRoute');
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ['http://toppings.rprakashdass.in/', 'http://localhost:5173'];
+const allowedOrigins = ['http://toppings.rprakashdass.in', 'http://localhost:5173'];
 
-// CORS middleware applied before routes
 app.use(cors({
     origin: function (origin, callback) {
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
@@ -24,6 +23,14 @@ app.use(cors({
     methods: ["POST", "PUT", "GET", "DELETE"],
     credentials: true,
 }));
+
+app.use((err, req, res, next) => {
+    if (err instanceof Error && err.message === 'Not allowed by CORS') {
+        res.status(403).json({ error: 'CORS policy does not allow access from this origin.' });
+    } else {
+        next(err);
+    }
+});
 
 const port = 7777;
 
