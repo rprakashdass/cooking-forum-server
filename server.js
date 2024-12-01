@@ -10,7 +10,7 @@ const router = require('./Router/AuthRoute');
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ['https://toppings.rprakashdass.in', 'http://localhost:5173'];
+const allowedOrigins = ['https://toppings.rprakashdass.in', 'https://toppings.project.rprakashdass.in', 'http://localhost:5173'];
 
 app.use(cors({
     origin: function (origin, callback) {
